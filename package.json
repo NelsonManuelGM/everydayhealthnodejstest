@@ -72,10 +72,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/evdy-consumer/EverydayHealthNodeJSTest.git"
+    "url": "git+https://github.com/NelsonManuelGM/everydayhealthnodejstest.git"
   },
-  "bugs": {
-    "url": "https://github.com/evdy-consumer/EverydayHealthNodeJSTest/issues"
-  },
-  "homepage": "https://github.com/evdy-consumer/EverydayHealthNodeJSTest#readme"
+  "homepage": "https://github.com/NelsonManuelGM/everydayhealthnodejstest.git#readme"
 }
