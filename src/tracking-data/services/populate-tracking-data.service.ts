@@ -23,7 +23,7 @@ class Entity implements EntityData {
 @Injectable()
 export class PopulateTrackingDataService {
     constructor(
-        @InjectModel(TrackingDatum.name) private trackingData: Model<TrackingDatum>,
+        @InjectModel(TrackingDatum.name) private populateTrackingData: Model<TrackingDatum>,
         private readonly csvParser: CsvParser
     ) { }
 
@@ -31,7 +31,10 @@ export class PopulateTrackingDataService {
     async populate() {
         const data = await this.collectData(this.csvParser)
         console.log('data %o', data)
-        // this.trackingData.bulkWrite(data)
+        // this.populateTrackingData.bulkWrite(data)
+
+        //TODO temporary solution
+        return data
     }
 
 
