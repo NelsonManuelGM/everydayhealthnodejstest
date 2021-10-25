@@ -4,7 +4,6 @@ import { TrackingDataModule } from './tracking-data/tracking-data.module';
 
 @Module({
   imports: [ConfigurationModule, TrackingDataModule],
-  controllers: [],
   providers: [],
 })
 export class AppModule { }
