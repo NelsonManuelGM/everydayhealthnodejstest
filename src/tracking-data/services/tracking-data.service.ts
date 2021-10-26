@@ -5,10 +5,35 @@ import { TrackingDatum } from '../entities/tracking-datum.entity';
 
 @Injectable()
 export class TrackingDataService {
-  constructor(@InjectModel(TrackingDatum.name) private trackingData: Model<TrackingDatum> ){}
-  
+  constructor(@InjectModel(TrackingDatum.name) private trackingData: Model<TrackingDatum>) { }
 
-  getNLSummary(newsletter_id: number){
-    return newsletter_id
+  async getNLSummary(newsletter_id: number) {
+    const data = await this.trackingData.aggregate(
+      [
+        {
+          '$match': {
+            'newsletter_id': newsletter_id
+          }
+        }, {
+          '$group': {
+            '_id': {
+              '$dateToString': {
+                'format': '%Y-%m-%d',
+                'date': '$activity_date'
+              }
+            },
+            'count': {
+              '$count': {}
+            }
+          }
+        }, {
+          '$sort': {
+            '_id': 1
+          }
+        }
+      ]
+    )
+
+    return { newsletter_id: newsletter_id, summary: await data }
   }
 }

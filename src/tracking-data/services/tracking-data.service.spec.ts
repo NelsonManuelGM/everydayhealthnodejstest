@@ -1,19 +1,20 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TrackingDatum } from './entities/tracking-datum.entity';
+import { TrackingDatum } from '../entities/tracking-datum.entity';
 import { TrackingDataService } from './tracking-data.service';
 
 describe('TrackingDataService', () => {
   let service: TrackingDataService;
-  // const data = {
-  //   user_id:1,
-  //   newsletter_id:103,
-  //   action:'open',
-  //   activity_date: new Date('2021-06-04 22:19:57')
-  // }
+  const aggregateData =
+    [
+      {
+        "_id": "2021-06-01",
+        "count": 3
+      }
+    ]
 
   const mockTrackingData = {
-    find: jest.fn((newsletter_id) => newsletter_id),
+    aggregate: jest.fn(() => aggregateData),
   };
 
   beforeEach(async () => {
@@ -34,9 +35,13 @@ describe('TrackingDataService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should return an predefined object',()=>{
+  it('should return the summary due a newsletter_id', async () => {
     const newsletter_id = 1
-    const data = service.getNLSummary(newsletter_id)
-    expect(data).toEqual(1)
+    const expectedData = s => ({
+      "newsletter_id": newsletter_id,
+      "summary": s
+    })
+    const _data = await service.getNLSummary(newsletter_id)
+    expect(_data).toEqual(expectedData(aggregateData))
   })
 });
