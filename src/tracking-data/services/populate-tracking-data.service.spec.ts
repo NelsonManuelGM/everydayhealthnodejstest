@@ -1,13 +1,14 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
+import { CsvModule } from 'nest-csv-parser';
 import { TrackingDatum } from '../entities/tracking-datum.entity';
 import { PopulateTrackingDataService } from './populate-tracking-data.service';
 
 describe('PopulateTrackingDataService', () => {
   let service: PopulateTrackingDataService;
-  
+
   const mockTrackingDatum = {
-    
+
   }
 
   beforeEach(async () => {
@@ -19,6 +20,7 @@ describe('PopulateTrackingDataService', () => {
           useValue: mockTrackingDatum
         }
       ],
+      imports: [CsvModule]
     }).compile();
 
     service = module.get<PopulateTrackingDataService>(PopulateTrackingDataService);

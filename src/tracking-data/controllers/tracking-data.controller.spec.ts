@@ -5,20 +5,34 @@ import { TrackingDataController } from './tracking-data.controller';
 
 describe('TrackingDataController', () => {
   let controller: TrackingDataController;
-  const data = id =>({
+  const summary = [
+    {
+      "_id": "2021-06-01",
+      "count": 3
+    },
+    {
+      "_id": "2021-06-02",
+      "count": 6
+    }]
+
+  const nLSummaryData = id => ({
     "newsletter_id": id,
-    "summary": [
-      {
-        "_id": "2021-06-01",
-        "count": 3
-      },
-      {
-        "_id": "2021-06-02",
-        "count": 6
-      }]
+    "summary": summary
+  })
+  const userSummaryData = id => ({
+    "user_id": id,
+    "summary": summary
+  })
+
+  const nlActionSummaryData = id => ({
+    "newsletter_id": id,
+    "action": "open",
+    "summary": summary
   })
   const mockTrackingDataService = {
-    getNLSummary: jest.fn((id)=>data(id))
+    getNLSummary: jest.fn((id) => nLSummaryData(id)),
+    getUserSummary: jest.fn((id) => userSummaryData(id)),
+    getNLActionSummary: jest.fn((id) => nlActionSummaryData(id)),
   }
 
   beforeEach(async () => {
@@ -37,10 +51,24 @@ describe('TrackingDataController', () => {
     expect(controller).toBeDefined();
   });
 
-  it('should return getNLSummary data', async () => {
+  it('should return Newsletter Summary data', async () => {
     const newsletter_id = 101
     const response = await controller.getNLSummary(newsletter_id)
 
-    expect(response).toEqual(data(newsletter_id));
+    expect(response).toEqual(nLSummaryData(newsletter_id));
+  });
+
+  it('should return User Summary data', async () => {
+    const user_id = 5
+    const response = await controller.getUserSummary(user_id)
+
+    expect(response).toEqual(userSummaryData(user_id));
+  });
+
+  it('should return New Letters Summary data', async () => {
+    const newsletter_id = 5
+    const response = await controller.getNLActionSummary(newsletter_id)
+
+    expect(response).toEqual(nlActionSummaryData(newsletter_id));
   });
 });

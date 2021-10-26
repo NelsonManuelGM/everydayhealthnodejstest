@@ -34,6 +34,66 @@ export class TrackingDataService {
       ]
     )
 
-    return { newsletter_id: newsletter_id, summary: await data }
+    return { newsletter_id: newsletter_id, summary: data }
+  }
+
+  async getUserSummary(user_id: number) {
+    const data = await this.trackingData.aggregate(
+      [
+        {
+          '$match': {
+            'user_id': user_id
+          }
+        }, {
+          '$group': {
+            '_id': {
+              '$dateToString': {
+                'format': '%Y-%m-%d',
+                'date': '$activity_date'
+              }
+            },
+            'count': {
+              '$count': {}
+            }
+          }
+        }, {
+          '$sort': {
+            '_id': 1
+          }
+        }
+      ]
+    )
+    return { user_id: user_id, summary: data }
+  }
+
+  async getNLActionSummary(newsletter_id: number) {
+    const action = 'open'
+    const data = await this.trackingData.aggregate(
+      [
+        {
+          '$match': {
+            'newsletter_id': newsletter_id,
+            'action': action
+          }
+        }, {
+          '$group': {
+            '_id': {
+              '$dateToString': {
+                'format': '%Y-%m-%d',
+                'date': '$activity_date'
+              }
+            },
+            'count': {
+              '$count': {}
+            }
+          }
+        }, {
+          '$sort': {
+            '_id': 1
+          }
+        }
+      ]
+    )
+    return { newsletter_id: newsletter_id, action: action, summary: data }
   }
 }
