@@ -5,7 +5,7 @@ import { TrackingDataService } from '../services/tracking-data.service';
 export class TrackingDataController {
   constructor(private readonly trackingDataService: TrackingDataService) { }
 
-  @Get(':id')
+  @Get('/nlsummary/:id')
   getNLSummary(@Param('id') newsletter_id: number) {
     return this.trackingDataService.getNLSummary(+newsletter_id)
   }
