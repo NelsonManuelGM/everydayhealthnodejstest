@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CsvModule } from 'nest-csv-parser';
-import { TrackingDataCommand } from 'src/tracking-data/command/tracking-data.command';
+import { TrackingDataCommand } from './command/tracking-data.command';
 import { TrackingDataController } from './controllers/tracking-data.controller';
 import { TrackingDatum, TrackingDatumSchema } from './entities/tracking-datum.entity';
 import { PopulateTrackingDataService } from './services/populate-tracking-data.service';

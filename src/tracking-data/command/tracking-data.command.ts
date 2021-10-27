@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Command } from 'nestjs-command';
-import { PopulateTrackingDataService } from 'src/tracking-data/services/populate-tracking-data.service';
+import { PopulateTrackingDataService } from '../services/populate-tracking-data.service';
 
 @Injectable()
 export class TrackingDataCommand {
