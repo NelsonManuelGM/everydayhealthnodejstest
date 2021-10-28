@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CommandModule } from 'nestjs-command';
 
 @Module({
   imports: [
@@ -15,7 +14,6 @@ import { CommandModule } from 'nestjs-command';
         autoCreate: true,
       })
     }),
-    CommandModule
   ],
   controllers: [],
   providers: [],

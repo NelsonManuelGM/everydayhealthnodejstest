@@ -1,15 +1,13 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CsvModule } from 'nest-csv-parser';
-import { TrackingDataCommand } from './command/tracking-data.command';
 import { TrackingDataController } from './controllers/tracking-data.controller';
 import { TrackingDatum, TrackingDatumSchema } from './entities/tracking-datum.entity';
-import { PopulateTrackingDataService } from './services/populate-tracking-data.service';
 import { TrackingDataService } from './services/tracking-data.service';
 
 @Module({
   controllers: [TrackingDataController],
-  providers: [TrackingDataService, PopulateTrackingDataService, TrackingDataCommand],
+  providers: [TrackingDataService],
   imports: [
     MongooseModule.forFeature([{ name: TrackingDatum.name, schema: TrackingDatumSchema }]),
     CsvModule

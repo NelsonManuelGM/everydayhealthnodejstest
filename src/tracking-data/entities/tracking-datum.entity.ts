@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 
 
-@Schema()
+@Schema({collection: 'trackingdata'})
 export class TrackingDatum extends Document {
     @Prop({ required: true, index: true })
     user_id: number;
