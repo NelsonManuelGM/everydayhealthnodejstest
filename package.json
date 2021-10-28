@@ -20,7 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "test:e2e:watch": "jest --config ./test/jest-e2e.json --watch",
-    "populate": "nestjs-command populate"
+    "migrate:up": "migrate --migrations-dir=\"./src/migrations\" --compiler=\"ts:./src/migrations-utils/ts-compiler.js\" up"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -32,14 +32,13 @@
     "@nestjs/swagger": "^5.1.4",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "migrate": "^1.7.0",
     "mongoose": "^6.0.12",
     "nest-csv-parser": "^2.0.4",
-    "nestjs-command": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "swagger-ui-express": "^4.1.6",
-    "yargs": "^17.2.1"
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
