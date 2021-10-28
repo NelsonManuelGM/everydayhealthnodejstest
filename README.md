@@ -29,3 +29,29 @@ csv file containing record for user activity for newsletters.
 
 - **Argument**: newsletter_id
 - **Response**: daily open and click action counts for given newsletter_id
+
+## Instructions
+
+- The application is designed to be executed using docker-compose cli.
+
+- The mocked information from the .csv file will be populate using migrations on a mongodb database.
+
+In order to tray demo run the next command.
+
+```
+> docker-compose up
+```
+
+it will run `migrate:up` to execute data migrations and then `start:dev`, this is done automatically.
+
+## Swagger
+
+swagger available on url root
+
+```
+\
+```
+
+## Observation
+
+- If demo were already ran and you desire rerun the migrations, make sure you delete the `.migrate` file in the root of the project.
