@@ -30,11 +30,11 @@ csv file containing record for user activity for newsletters.
 - **Argument**: newsletter_id
 - **Response**: daily open and click action counts for given newsletter_id
 
-## Use Instructions
+## Demo Instructions
 
-- The application is designed to be executed using docker-compose cli.
+- The application is designed to be executed using docker-compose CLI.
 
-- The mocked information from the .csv file will be populate using migrations on a mongodb database.
+- The mocked information from the .csv file will be populated using migrations on a MongoDB database in order to test the demo.
 
 In order to tray demo run the next command.
 
@@ -46,7 +46,7 @@ it will run:
 
 1. `migrate:up` to execute data migrations.
 2. `test` to execute unittest.
-3. `test:e2e` to execute end to end test.
+3. `test:e2e` to execute end-to-end test.
 4. `start`, start server.
 
 ## Swagger
@@ -54,9 +54,9 @@ it will run:
 swagger available on url root
 
 ```
-\
+http://<domain>:<port>/
 ```
 
 ## Observation
 
-- If demo were already ran and you desire rerun the migrations, make sure you delete the `.migrate` file in the root of the project.
+- If the demo was already run and you desire to rerun the migrations, make sure you delete the `.migrate` file at the root of the project.
