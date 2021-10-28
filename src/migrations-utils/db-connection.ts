@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const DB_URI = 'mongodb://everydayhealth:everydayhealth@localhost:27017/everydayhealth?authSource=admin&directConnection=true&ssl=false'
+const DB_URI = 'mongodb://everydayhealth:everydayhealth@mongodb:27017/everydayhealth?authSource=admin&directConnection=true&ssl=false'
 
 /**
  * Create mongodb connection

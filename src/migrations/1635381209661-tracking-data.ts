@@ -10,5 +10,6 @@ module.exports.up = async function () {
   const data = await dataReader()
   const db = await getDb()
   const collection = await db.createCollection(DB_NAME)
+  console.log('%o', data) //FOR DEBUGGING PURPOSE ONLY
   collection.bulkWrite(data)
 }

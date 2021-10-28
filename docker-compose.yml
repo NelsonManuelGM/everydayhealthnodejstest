@@ -9,16 +9,10 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-    command: yarn run start:dev
+    command: bash -c "yarn migrate:up && yarn run start:dev"
     restart: always
     env_file:
       - .env
-    # environment:
-    #   - MONGO_URI=mongodb://mongodb:27017
-    #   - DB_USER=root
-    #   - DB_PASSWORD=example
-    #   - DB_NAME=houses
-    #   - MONGO_URI=mongodb://mongodb:27017/houses
     depends_on:
       - mongodb
 
