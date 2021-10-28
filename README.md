@@ -30,7 +30,7 @@ csv file containing record for user activity for newsletters.
 - **Argument**: newsletter_id
 - **Response**: daily open and click action counts for given newsletter_id
 
-## Instructions
+## Use Instructions
 
 - The application is designed to be executed using docker-compose cli.
 
@@ -42,7 +42,12 @@ In order to tray demo run the next command.
 > docker-compose up
 ```
 
-it will run `migrate:up` to execute data migrations and then `start:dev`, this is done automatically.
+it will run:
+
+1. `migrate:up` to execute data migrations.
+2. `test` to execute unittest.
+3. `test:e2e` to execute end to end test.
+4. `start`, start server.
 
 ## Swagger
 

@@ -1,15 +1,15 @@
-version: '3.9'
+version: "3.9"
 
 services:
   api:
     container_name: everyday-health-api
     build: .
-    ports: 
+    ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-    command: bash -c "yarn migrate:up && yarn run start:dev"
+    command: bash -c "yarn migrate:up && yarn test && yarn test:e2e && yarn run start"
     restart: always
     env_file:
       - .env
@@ -27,4 +27,3 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
-
